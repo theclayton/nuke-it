@@ -1,0 +1,33 @@
+{
+  "name": "nuke",
+  "version": "1.0.0",
+  "description": "Nuke your node modules and package-lock in a rather entertaining manner. Then reinstall them.",
+  "main": "index.js",
+  "scripts": {
+    "code-yellow": "node index.js",
+    "nuke": "node index.js",
+    "it": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theclayton/nuke.git"
+  },
+  "keywords": [
+    "nuke",
+    "nuke modules",
+    "npm ci with package lock",
+    "reinstall node modules",
+    "delete and reinstall",
+    "nuclear",
+    "ni"
+  ],
+  "author": "Clayton Ward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theclayton/nuke/issues"
+  },
+  "homepage": "https://github.com/theclayton/nuke#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
