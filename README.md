@@ -7,7 +7,7 @@ The tool that completely obliterates your node modules and package-lock file, th
 Either through cloning with git or by using npm:
 
 ```bash
-npm install -g nuke
+npm install -g nuke-it
 ```
 That's it, now you are ready to nuke some mods broh!
 # Usage
@@ -15,7 +15,7 @@ That's it, now you are ready to nuke some mods broh!
 Navigate to the directory of the enemy target and initiate the launch sequence with the following command:
 
 ```bash
-nuke
+nuke-it
 ```
 Wait for utter annihilation of target's node modules and package lock. Visual representation of said destruction will be evident in terminal window.
 

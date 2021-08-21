@@ -1,10 +1,10 @@
 {
-  "name": "nuke",
+  "name": "nuke-it",
   "version": "1.0.0",
   "description": "The tool that completely obliterates your node modules and package-lock file, then reinstalls them automatically.",
   "main": "index.js",
   "bin": {
-    "nuke": "index.js"
+    "nuke-it": "index.js"
   },
   "scripts": {
     "code-yellow": "node index.js",
