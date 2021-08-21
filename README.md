@@ -1,6 +1,8 @@
-# nuke
+# nuke-it
 
 The tool that completely obliterates your node modules and package-lock file, then reinstalls them automatically. All this with just one simple command. Oh yeah, it's that good.
+
+[![npm version](https://badge.fury.io/js/nuke-it.svg)](https://badge.fury.io/js/nuke-it)
 
 # Installation
 
