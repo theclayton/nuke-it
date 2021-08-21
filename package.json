@@ -1,6 +1,6 @@
 {
   "name": "nuke-it",
-  "version": "1.0.2",
+  "version": "1.69.1",
   "description": "The tool that completely obliterates your node modules and package-lock file, then reinstalls them automatically.",
   "main": "index.js",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theclayton/nuke.git"
+    "url": "git+https://github.com/theclayton/nuke-it.git"
   },
   "keywords": [
     "nuke",
@@ -28,9 +28,9 @@
   "author": "Clayton Ward",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/theclayton/nuke/issues"
+    "url": "https://github.com/theclayton/nuke-it/issues"
   },
-  "homepage": "https://github.com/theclayton/nuke#readme",
+  "homepage": "https://github.com/theclayton/nuke-it#readme",
   "devDependencies": {
     "eslint": "^7.32.0"
   }
