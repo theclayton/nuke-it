@@ -19,19 +19,19 @@ async function initiate_launch_sequence() {
         // Add / to end of path
         if (path.substr(-1) !== '/') path += '/';
 
-        if (!fs.existsSync(path + 'package.json')) throw new Error('Not a node project');
+        if (await !fs.promises.stat(path + 'package.json')) throw new Error('Not a node project');
 
         /// HERE WE GO ///
         begin_the_incredible_graphical_experience()
 
         // Check if package-lock.json exists and nuke it
-        if (fs.existsSync(path + 'package-lock.json')) {
-            fs.unlinkSync(path + 'package-lock.json')
+        if (await fs.promises.stat(path + 'package-lock.json')) {
+            await fs.promises.unlink(path + 'package-lock.json')
         }
 
         // Check if node_modules file exists and nuke it
-        if (fs.existsSync(path + 'node_modules')) {
-            fs.rmdirSync(path + 'node_modules', {
+        if (await fs.promises.stat(path + 'node_modules')) {
+            await fs.promises.rmdir(path + 'node_modules', {
                 recursive: true
             });
         }
