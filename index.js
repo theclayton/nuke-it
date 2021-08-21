@@ -22,30 +22,32 @@ async function initiate_launch_sequence() {
         // Add / to end of path
         if (path.substr(-1) !== '/') path += '/';
 
-        // Check if directory contains a node app
-        if (await !fs.promises.stat(path + 'package.json')) throw new Error('Not a node project');
+        // Check if is node project
+        try {
+            await fs.promises.stat(path + 'package.json');
+        } catch {
+            console.log('Not a node project.'); abort();
+        }
 
         begin_the_incredible_immersive_graphical_experience();
 
-        // Check if package-lock.json exists and nuke it
-        if (await fs.promises.stat(path + 'package-lock.json')) {
+        // Nuke package-lock.json
+        try {
             await fs.promises.unlink(path + 'package-lock.json');
-        }
+        } catch { }
 
-        // Check if node_modules folder exists and nuke it
-        if (await fs.promises.stat(path + 'node_modules')) {
+        // Nuke node_modules folder
+        try {
             await fs.promises.rmdir(path + 'node_modules', { recursive: true });
-        }
+        } catch { }
 
         await npm_i();
 
-        if (animationDone) process.exit(0);
-
+        if (animationDone) abort();
         nukeDone = true;
-
-    } catch (e) {
-        console.log(e);
-        process.exit(0);
+    } catch {
+        console.log('failed.');
+        abort();
     }
 }
 
@@ -84,7 +86,11 @@ function reconstruct(arr, i = 0) {
         reconstruct(arr, i+=1);
     }, 250);
 
-    if (nukeDone) process.exit(0);
+    if (nukeDone) abort();
+}
+
+function abort() {
+    process.exit(0);
 }
 
 initiate_launch_sequence();
