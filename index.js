@@ -10,7 +10,7 @@ let nukeDone = false;
 
 async function initiate_launch_sequence() {
     try {
-        let path = __dirname;
+        let path = process.env.PWD;
 
         if (process.argv[2] === '-p' && process.argv[3]) {
             path = process.argv[3];
