@@ -1,96 +1,104 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const { exec } = require("child_process");
-const hype = require('./words/hype');
-const tnt = require('./arsenal/launch-fuse');
-const rocket = require('./arsenal/rocket');
-const nuke = require('./explosions/nuclear');
-const suns = require('./words/reconstruct');
+const fs = require("fs");
+const hype = require("./graphics/words/hype");
+const tnt = require("./graphics/arsenal/launch-fuse");
+const rocket = require("./graphics/arsenal/rocket");
+const nuke = require("./graphics/explosions/nuclear");
+const suns = require("./graphics/words/reconstruct");
+const {
+  has_flag,
+  show_help,
+  are_you_sure,
+  get_path,
+  npm_i,
+  abort,
+} = require("./utils/cli.js");
 
 let animationDone = false;
 let nukeDone = false;
 
 async function initiate_launch_sequence() {
-    try {
-        let path = process.env.PWD;
+  if (has_flag(["-h", "-help", "--h", "--help"])) show_help();
 
-        if (process.argv[2] === '-p' && process.argv[3]) {
-            path = process.argv[3];
-        }
+  const path = get_path();
 
-        // Add / to end of path
-        if (path.substr(-1) !== '/') path += '/';
+  try {
+    if (has_flag(["-a", "fubar", "FUBAR"])) await nuke_everything(path);
+    else await nuke_the_mods(path);
+  } catch {
+    console.log("failed.");
+    abort();
+  }
 
-        // Check if is node project
-        try {
-            await fs.promises.stat(path + 'package.json');
-        } catch {
-            console.log('Not a node project.'); abort();
-        }
-
-        begin_the_incredible_immersive_graphical_experience();
-
-        // Nuke package-lock.json
-        try {
-            await fs.promises.unlink(path + 'package-lock.json');
-        } catch { }
-
-        // Nuke node_modules folder
-        try {
-            await fs.promises.rmdir(path + 'node_modules', { recursive: true });
-        } catch { }
-
-        await npm_i();
-
-        if (animationDone) abort();
-        nukeDone = true;
-    } catch {
-        console.log('failed.');
-        abort();
-    }
-}
-
-function npm_i() {
-    return new Promise(function (resolve, reject) {
-        exec("npm i", () => {
-            resolve();
-        });
-    });
+  if (animationDone) abort();
+  nukeDone = true;
 }
 
 function begin_the_incredible_immersive_graphical_experience() {
-    const arr = [...hype, ...tnt, ...rocket, ...nuke];
+  animation([...hype, ...tnt, ...rocket, ...nuke]);
+}
 
-    animation(arr);
+async function nuke_the_mods(path) {
+  // Here we go...
+  begin_the_incredible_immersive_graphical_experience();
+
+  // Add / to end of path
+  if (path.substr(-1) !== "/") path += "/";
+
+  // Check if is node project
+  try {
+    await fs.promises.stat(path + "package.json");
+  } catch {
+    console.log("Not a node project.");
+    abort();
+  }
+
+  // Nuke package-lock.json and node_modules folder
+  try {
+    await fs.promises.unlink(path + "package-lock.json");
+    await fs.promises.rmdir(path + "node_modules", { recursive: true });
+  } catch {}
+
+  await npm_i();
+}
+
+async function nuke_everything(path) {
+  try {
+    const affirmative = await are_you_sure(path);
+
+    if (!affirmative) return;
+
+    // Here we go...
+    begin_the_incredible_immersive_graphical_experience();
+
+    // Nuke entire folder
+    await fs.promises.rmdir(path, { recursive: true });
+  } catch {}
 }
 
 function animation(arr, i = 0) {
-    if (i >= arr.length) {
-        animationDone = true;
-        reconstruct(suns);
-        return;
-    }
+  if (i >= arr.length) {
+    animationDone = true;
+    _reconstruct(suns);
+    return;
+  }
 
-    setTimeout(() => {
-        process.stdout.write("\r" + arr[i]);
-        animation(arr, i+=1)
-    }, 500);
+  setTimeout(() => {
+    process.stdout.write("\r" + arr[i]);
+    animation(arr, (i += 1));
+  }, 500);
 }
 
-function reconstruct(arr, i = 0) {
-    if (i >= arr.length) i = 0;
+function _reconstruct(arr, i = 0) {
+  if (i >= arr.length) i = 0;
 
-    setTimeout(() => {
-        process.stdout.write("\r   " + arr[i] + ' Reconstructing ' + arr[i]);
-        reconstruct(arr, i+=1);
-    }, 250);
+  setTimeout(() => {
+    process.stdout.write("\r   " + arr[i] + " Reconstructing " + arr[i]);
+    reconstruct(arr, (i += 1));
+  }, 250);
 
-    if (nukeDone) abort();
-}
-
-function abort() {
-    process.exit(0);
+  if (nukeDone) abort();
 }
 
 initiate_launch_sequence();
