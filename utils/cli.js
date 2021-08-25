@@ -6,6 +6,7 @@ function has_flag(flags) {
     const flag = flags[i];
 
     if (process.argv.indexOf(flag) > 1) return true;
+    return false;
   }
 }
 

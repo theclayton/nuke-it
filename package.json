@@ -7,6 +7,8 @@
     "nuke-it": "index.js"
   },
   "scripts": {
+    "test": "node tests/index.js",
+    "lint": "eslint .",
     "code-yellow": "node index.js",
     "nuke": "node index.js",
     "it": "node index.js"
