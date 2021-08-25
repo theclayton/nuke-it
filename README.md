@@ -23,4 +23,15 @@ nuke-it
 ```
 Wait for utter annihilation of target's node modules and package lock. Visual representation of said destruction will be evident in terminal window.
 
+## Optional flags
+| flag             | description | example |
+-------------------|-------------|---------|
+| -p <path/to/dir> | Explicitly defines repo path to be nuked.                 | `nuke-it -p /usr/gijoe/target/dir` |
+| -a               | Deletes all contents of the target directory.             | `nuke-it -a`.    |
+| fubar            | Same as -a; for when your project has gotten out of hand. | `nuke-it fubar`  |
+| FUBAR            | Same as fubar. Ecept you're yelling this time.            | `nuke-it FUBAR`  |
+| --help           | Shows the help page. (can also use: -h, --h, -help).      | `nuke-it --help` |
+
+____________________________________________
+
 *The consumer assumes all responsibility and risk for this use of this software.
