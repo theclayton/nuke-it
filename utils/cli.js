@@ -5,9 +5,7 @@ function has_flag(flags) {
   for (let i = 0; i < flags.length; i++) {
     const flag = flags[i];
 
-    if (process.argv.indexOf(flag) > 1) {
-      return true;
-    }
+    if (process.argv.indexOf(flag) > 1) return true;
   }
 }
 

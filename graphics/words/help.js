@@ -25,7 +25,7 @@ nuke-it [-a] [fubar] [FUBAR]
 
 nuke-it [-p <path/to/dir>]
         Explicitly defines repo path to be nuked
-        *example: nuke-it -p /usr/gijoe/target-dir
+        *example: nuke-it -p /usr/gijoe/target/dir
 
 nuke-it [-h] [--h] [-help] [--help]
         Shows this help page
