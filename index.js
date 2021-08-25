@@ -64,26 +64,26 @@ async function nuke_the_mods(path) {
 }
 
 async function nuke_everything(path) {
-  try {
-    const affirmative = await are_you_sure(path);
+  const affirmative = await are_you_sure(path);
 
-    if (!affirmative) return;
+  if (!affirmative) return;
 
-    // Here we go...
-    begin_the_incredible_immersive_graphical_experience();
+  // Here we go...
+  begin_the_incredible_immersive_graphical_experience();
 
-    // Nuke entire folder
-    await fs.promises.rmdir(path, { recursive: true });
-  } catch {}
+  // Nuke entire folder
+  await fs.promises.rmdir(path, { recursive: true });
 }
 
 function animation(arr, i = 0) {
+  // Start recontruction animation
   if (i >= arr.length) {
     animationDone = true;
     _reconstruct(suns);
     return;
   }
 
+  // Animate though arr
   setTimeout(() => {
     process.stdout.write("\r" + arr[i]);
     animation(arr, (i += 1));
@@ -91,8 +91,10 @@ function animation(arr, i = 0) {
 }
 
 function _reconstruct(arr, i = 0) {
+  // Repeat forever
   if (i >= arr.length) i = 0;
 
+  // Animate though arr
   setTimeout(() => {
     process.stdout.write("\r   " + arr[i] + " Reconstructing " + arr[i]);
     reconstruct(arr, (i += 1));
