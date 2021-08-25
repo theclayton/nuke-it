@@ -1,6 +1,6 @@
 {
   "name": "nuke-it",
-  "version": "1.69.5",
+  "version": "1.69.6",
   "description": "The tool that completely obliterates your node modules and package-lock file, then reinstalls them automatically.",
   "main": "index.js",
   "bin": {
@@ -19,10 +19,14 @@
     "nuke",
     "nuke it",
     "nuke em",
+    "nuke them",
     "nuke some mods",
     "nuke modules",
+    "node nuke",
     "npm ci with package lock",
     "nuclear",
+    "fubar",
+    "bomb",
     "ni"
   ],
   "author": "Clayton Ward",
