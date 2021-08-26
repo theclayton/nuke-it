@@ -79,7 +79,7 @@ function animation(arr, i = 0) {
   // Start recontruction animation
   if (i >= arr.length) {
     animationDone = true;
-    _reconstruct(suns);
+    reconstruct(suns);
     return;
   }
 
@@ -90,7 +90,7 @@ function animation(arr, i = 0) {
   }, 500);
 }
 
-function _reconstruct(arr, i = 0) {
+function reconstruct(arr, i = 0) {
   // Repeat forever
   if (i >= arr.length) i = 0;
 
