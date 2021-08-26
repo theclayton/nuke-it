@@ -6,6 +6,8 @@ Relies on 0 dependencies.
 
 [![npm version](https://badge.fury.io/js/nuke-it.svg)](https://badge.fury.io/js/nuke-it)
 
+![nuke-it](https://github.com/theclayton/nuke-it/blob/main/WATCHME.gif)
+
 # Installation
 
 Either through cloning with git or by using npm:
