@@ -38,6 +38,6 @@
   },
   "homepage": "https://github.com/theclayton/nuke-it#readme",
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^8.56.0"
   }
 }
