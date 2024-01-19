@@ -57,7 +57,7 @@ async function nuke_the_mods(path) {
   // Nuke package-lock.json and node_modules folder
   try {
     await fs.promises.unlink(path + "package-lock.json");
-    await fs.promises.rmdir(path + "node_modules", { recursive: true });
+    await fs.promises.rm(path + "node_modules", { recursive: true });
   } catch {}
 
   await npm_i();
@@ -72,7 +72,7 @@ async function nuke_everything(path) {
   begin_the_incredible_immersive_graphical_experience();
 
   // Nuke entire folder
-  await fs.promises.rmdir(path, { recursive: true });
+  await fs.promises.rm(path, { recursive: true });
 }
 
 function animation(arr, i = 0) {
